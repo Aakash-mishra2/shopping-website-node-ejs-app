@@ -7,9 +7,9 @@
    <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <form class="product-form" action="/admin/add-product" method="POST">
+        <form class="product-form" action="<%= path %>" method="POST">
             <div class="form-control">
-                <label for="title">Title</label>
+                <label for="title"><%= pageTitle %></label>
                 <input type="text" name="title" id="title">
             </div>
             <div class="form-control">

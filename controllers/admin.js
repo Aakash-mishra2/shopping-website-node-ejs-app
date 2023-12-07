@@ -4,9 +4,6 @@ exports.getAddProduct = (req, res, next) => {
   res.render('admin/add-product', {
     pageTitle: 'Add Product',
     path: '/admin/add-product',
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
   });
 };
 
@@ -18,6 +15,18 @@ exports.postAddProduct = (req, res, next) => {
   const product = new Product(title, imageUrl, description, price);
   product.save();
   res.redirect('/');
+};
+
+exports.editProduct = (req, res, next) => {
+  const editProId = req.params.pId;
+  Product.findById(editProId, product => {
+    res.render('admin/edit-product', {
+      pageTitle: 'Edit Product',
+      path: '/products',
+      product: product
+    });
+  });
+
 };
 
 exports.getProducts = (req, res, next) => {
